@@ -1,45 +1,245 @@
-*{ -webkit-tap-highlight-color:rgba(0,0,0,0); -webkit-box-sizing: border-box; box-sizing: border-box; }
-.share_img{ width: 0; height: 0; overflow: hidden; opacity: 0; }
-.content{ padding: 80px 20px;}
-.text_wrapper{ display: -webkit-box; display: flex; }
-.text_wrapper .text{ padding-top: 20px; padding-left: 20px; }
-.hide{ display: none !important; }
-p{ margin: 0; }
-.btn-groups{ padding-right: 20px; text-align: center; }
-.heart-btn{ display: inline-block; animation: breath 0.8s linear 0s infinite both; -webkit-animation: breath 0.8s linear 0s infinite both; }
-.btn{ position: relative; display: inline-block; width: 60px; height: 60px; margin: 0 30px; transform: rotate(45deg); -webkit-transform: rotate(45deg);}
-.btn span{ display: block; width: 100%; height: 100%; line-height: 60px; margin-top: -10px; margin-left: -10px; text-align: center; transform: rotate(-45deg); -webkit-transform: rotate(-45deg); }
-.btn-a{ background: #d26ae5; }
-.btn-b{ background: #c9c9c9; }
-.btn-a:before{ content: ''; position: absolute; display: block; width: 30px; height: 60px; background: #d26ae5; left: -29px; top: 0; border-top-left-radius: 60px; border-bottom-left-radius: 60px; }
-.btn-a:after{ content: ''; position: absolute; display: block; width: 60px; height: 30px; background: #d26ae5; left: 0; top: -29px; border-top-left-radius: 60px; border-top-right-radius: 60px;}
-.btn-b:before{ content: ''; position: absolute; display: block; width: 30px; height: 60px; background: #c9c9c9; left: -29px; top: 0; border-top-left-radius: 60px; border-bottom-left-radius: 60px; }
-.btn-b:after{ content: ''; position: absolute; display: block; width: 60px; height: 30px; background: #c9c9c9; left: 0; top: -29px; border-top-left-radius: 60px; border-top-right-radius: 60px;}
-.container{  }
-.container .mask{ position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.3); }
-.container .modal{ width: 50%; height: 160px; position: absolute; top: 50%; left: 50%; padding: 20px 15px; border-radius: 5px; transform: translate(-50%, -70%); -webkit-transform: translate(-50%，-70%); background: #f3f3f3;}
-.container .modal p{ margin-top: 20px; margin-bottom: 20px; font-size: 16px; color: #353535; text-align: center;}
-.confirm{ display: block; width: 120px; height: 40px; margin: 0 auto; border: none; font-size: 16px; border-radius: 5px; color: #ffffff; background: #f45cae; }
-.type_words{ padding: 12px 20px; }
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.share_img {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+.content {
+  padding: 80px 20px;
+}
+.text_wrapper {
+  display: -webkit-box;
+  display: flex;
+}
+/* 限制图片大小，防止溢出 ✨ */
+.text_wrapper img {
+  max-width: 150px;
+  max-height: 150px;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.text_wrapper .text {
+  padding-top: 20px;
+  padding-left: 20px;
+}
+.hide {
+  display: none !important;
+}
+p {
+  margin: 0;
+}
+.btn-groups {
+  padding-right: 20px;
+  text-align: center;
+}
+.heart-btn {
+  display: inline-block;
+  animation: breath 0.8s linear 0s infinite both;
+  -webkit-animation: breath 0.8s linear 0s infinite both;
+}
+/* 愿意按钮更大 ✨ */
+.btn {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  margin: 0 30px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+.btn-a {
+  width: 90px !important;
+  height: 90px !important;
+  background: #d26ae5;
+  cursor: pointer; /* 鼠标变成小手 ✨ */
+}
+.btn span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin-top: -10px;
+  margin-left: -10px;
+  text-align: center;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+/* 愿意按钮文字更大，支持四个字 ✨ */
+.btn-a span {
+  font-size: 20px !important;
+  line-height: 90px !important;
+  font-weight: bold;
+  letter-spacing: 2px; /* 字间距 */
+}
+/* 勉强愿意按钮也支持四个字 ✨ */
+.btn-b {
+  width: 80px !important;
+  height: 80px !important;
+  background: #c9c9c9;
+  cursor: pointer; /* 鼠标变成小手 ✨ */
+}
+.btn-b span {
+  font-size: 16px !important;
+  line-height: 80px !important;
+  letter-spacing: 1px; /* 字间距 */
+}
+/* 愿意按钮爱心形状更大 ✨ */
+.btn-a:before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 45px;
+  height: 90px;
+  background: #d26ae5;
+  left: -44px;
+  top: 0;
+  border-top-left-radius: 90px;
+  border-bottom-left-radius: 90px;
+}
+.btn-a:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 90px;
+  height: 45px;
+  background: #d26ae5;
+  left: 0;
+  top: -44px;
+  border-top-left-radius: 90px;
+  border-top-right-radius: 90px;
+}
+/* 勉强愿意按钮爱心形状也调大 ✨ */
+.btn-b:before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 40px;
+  height: 80px;
+  background: #c9c9c9;
+  left: -39px;
+  top: 0;
+  border-top-left-radius: 80px;
+  border-bottom-left-radius: 80px;
+}
+.btn-b:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 80px;
+  height: 40px;
+  background: #c9c9c9;
+  left: 0;
+  top: -39px;
+  border-top-left-radius: 80px;
+  border-top-right-radius: 80px;
+}
+.container {
+}
+.container .mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+.container .modal {
+  width: 50%;
+  height: 160px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 20px 15px;
+  border-radius: 5px;
+  transform: translate(-50%, -70%);
+  -webkit-transform: translate(-50%，-70%);
+  background: #f3f3f3;
+}
+.container .modal p {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #353535;
+  text-align: center;
+}
+.confirm {
+  display: block;
+  width: 120px;
+  height: 40px;
+  margin: 0 auto;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+  color: #ffffff;
+  background: #f45cae;
+  cursor: pointer;
+}
+/* 双按钮样式 ✨ */
+.btn-reject {
+  display: inline-block;
+  width: 120px;
+  height: 40px;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+  color: #ffffff;
+  background: #c9c9c9;
+  cursor: pointer;
+}
+.btn-accept {
+  display: inline-block;
+  width: 120px;
+  height: 40px;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+  color: #ffffff;
+  background: #f45cae;
+  cursor: pointer;
+}
+.btn-reject:hover {
+  background: #b0b0b0;
+}
+.btn-accept:hover {
+  background: #ff6bb8;
+}
+/* 无按钮弹窗可点击样式 ✨ */
+.no-button-modal {
+  cursor: pointer;
+}
+.no-button-modal .modal:hover {
+  opacity: 0.95; /* 温和的视觉反馈，不会抖动 */
+}
+.type_words {
+  padding: 12px 20px;
+}
 @keyframes breath {
-    0% {
-        transform: scale3d(1,1,1);
-        -webkit-transform: scale3d(1,1,1);
-        transform-origin: 50% 50%;
-    }
-    50%{
-        transform: scale3d(1.02,1.02,1.02);
-        -webkit-transform: scale3d(1.02,1.02,1.02);
-        transform-origin: 50% 50%;
-    }
-    100%{
-        transform: scale3d(1,1,1);
-        -webkit-transform: scale3d(1,1,1);
-        transform-origin: 50% 50%;
-    }
+  0% {
+    transform: scale3d(1, 1, 1);
+    -webkit-transform: scale3d(1, 1, 1);
+    transform-origin: 50% 50%;
+  }
+  50% {
+    transform: scale3d(1.15, 1.15, 1.15); /* 更大的动效：从1.02改为1.15 ✨ */
+    -webkit-transform: scale3d(1.15, 1.15, 1.15);
+    transform-origin: 50% 50%;
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+    -webkit-transform: scale3d(1, 1, 1);
+    transform-origin: 50% 50%;
+  }
 }
-.page_one{
-    position: absolute;
-    z-index: 10;
+.page_one {
+  position: absolute;
+  z-index: 10;
 }
-.text{color: white}
+.text {
+  color: white;
+}
